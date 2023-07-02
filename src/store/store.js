@@ -4,20 +4,17 @@ import {URL_S} from "../config";
 import {cashReducer} from "./cashReducer";
 import {customerReducer} from "./customerReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
+import {countReducer} from "../Components/saga/countReducer";
 
 const defaultRequest = async () => {
     await axios.get(URL_S.ALL_POST)
 }
 
-export const defaultState = {
-    cash: 5,
-    customer: 2,
-}
 
-
-const rootReduser = combineReducers({
+const rootReducer = combineReducers({
+    count: countReducer,
     cash: cashReducer,
-    customer: customerReducer,
+    customers: customerReducer,
 })
 
-export const store = createStore(rootReduser, composeWithDevTools())
+export const store = createStore(rootReducer, composeWithDevTools())

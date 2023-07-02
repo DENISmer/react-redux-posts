@@ -5,21 +5,51 @@ import {Link} from "react-router-dom";
 import {Header} from "../Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
+import {addCashAction, getCashAction} from "../../store/cashReducer";
+import {addCustomerAction, removeCustomerAction} from "../../store/customerReducer";
+import {decrementCreator, incrementCreator} from "../saga/countReducer";
 
 export function PostsList(){
     const dispatch = useDispatch()
     const cash = useSelector(state => state.cash.cash)
-    const customer = useSelector(state => state.customer.customer)
+    const customers = useSelector(state => state.customers.customers)
+
+    const count = useSelector(state => state.count.count)
+
     const [inputValue,setInputValue] = useState(0)
 
+
+
     const addCash = (cash) => {
-        dispatch({type: "ADD_CASH",payload: cash})
+        dispatch(addCashAction(cash))
     }
     const getCash = (cash) =>{
-        dispatch({type: "GET_CASH",payload: cash})
+        dispatch(getCashAction(cash))
     }
 
-    let localCash;
+
+
+
+    const addCustomer = (name) => {
+        const customer = {
+            name: name,
+            id: Date.now(),
+        }
+        dispatch(addCustomerAction(customer))
+    }
+
+    const getCustomer = (customer) =>{
+        dispatch(removeCustomerAction(customer.id))
+    }
+
+    const increment = () => {
+        dispatch(incrementCreator())
+
+    }
+    const decrement = (count) => {
+        dispatch(decrementCreator())
+    }
+
     return <>
         <Container>
             <Header />
@@ -36,15 +66,31 @@ export function PostsList(){
                                 id="inputPassword5"
                                 aria-describedby="passwordHelpBlock"
                             />
-                                <Button onClick={() => {addCash(Number(prompt()))}}>add cash</Button>
-                            <Button onClick={() => {getCash(Number(prompt()))}}>get cash</Button>
+
                         </Form.Group>
                     </form>
                 </Col>
+                <Col md={{offset: 1,span: 5}}>
+                    <Button style={{margin: '3px'}} onClick={() => {addCash(Number(prompt()))}}>add cash</Button>
+
+                    <Button style={{margin: '3px'}} onClick={() => {getCash(Number(prompt()))}}>get cash</Button>
+
+                    <Button style={{margin: '3px'}} onClick={() => {addCustomer(prompt())}}>add customer</Button>
+
+                    <Button style={{margin: '3px'}} onClick={() => {getCustomer(prompt())}}>get customer</Button>
+
+                    <Button style={{margin: '3px'}} onClick={() => {increment()}}>+</Button>
+
+                    <Button style={{margin: '3px'}} onClick={() => {decrement()}}>-</Button></Col>
             </Row>
             <Row>
+                <Col md={{offset: 1,span: 5}}>
+                    cash: {cash}<br/> {customers.length > 0 ? <div>клиенты: {customers.map((customer,index)=>(
+                        <div style={{cursor: "auto",borderStyle: 'solid', borderRadius: '3px',borderWidth: '1px', padding: '2px',width: "max-content",marginTop: '3px'}} onClick={()=> getCustomer(customer)}>{customer.name}</div>
+                ))}</div> : <div>клиенты отсутствуют</div>}
+                </Col>
                 <Col>
-                    cash: {cash}<br/>customer: {customer}
+                    {count}
                 </Col>
             </Row>
             </Container>
