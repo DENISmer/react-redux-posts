@@ -8,8 +8,5 @@ export function AboutMe(){
             <br/>
             тут информация про меня
         </Container>
-
-
-
     </>
 }
