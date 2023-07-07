@@ -1,7 +1,5 @@
 import 'react-bootstrap'
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
-import {AboutMe} from "../AboutMe";
-import {Link} from "react-router-dom";
 import {Header} from "../Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
@@ -14,16 +12,18 @@ import {
 } from "../../store/customerReducer";
 import {decrementCreator, incrementCreator} from "../saga/countReducer";
 import {fetchCustomers, fetchPostsOfCustomer} from "../../requests/customers";
+import MainPageStyle from './PostsList.module.css'
 
 export function PostsList(){
+
     const dispatch = useDispatch()
-    const cash = useSelector(state => state.cash.cash)
-    const customers = useSelector(state => state.customers.customers)
-    const posts = useSelector(state => state.customers.posts)
 
-    const count = useSelector(state => state.count.count)
+    const cash = useSelector(state => state.cash.cash);
+    const customers = useSelector(state => state.customers.customers);
+    const posts = useSelector(state => state.customers.posts);
+    const count = useSelector(state => state.count.count);
 
-    const [inputValue,setInputValue] = useState(0)
+    const [inputValue,setInputValue] = useState(0);
 
 
 
@@ -75,7 +75,7 @@ export function PostsList(){
             <br/>
             <Row>
                 <Col md={"2"}>
-                    <form >
+                    <form className={MainPageStyle}>
                         <Form.Group>
                             <Form.Label htmlFor="inputPassword5">Password</Form.Label>
                             <Form.Control
@@ -108,9 +108,12 @@ export function PostsList(){
 
                 </Col>
             </Row>
-            <Row><div style={{borderRadius: "10px",background: 'wheat',position: 'fixed',top: '12%',left: '70%',display: "flex",width: '300px'}}>
+            <Row><div className={MainPageStyle.userPostsList}>
                 {posts && posts.title}
-                {posts && posts.map((post,index)=>(<div key={index}>
+                {posts && posts.map((post,index)=>(<div className={MainPageStyle.postDescription} key={index}>
+                        {'user id: ' + post.userId}
+                        <br/>
+                        {'post id: ' + post.id}
                             <h4>{post.title}</h4>
                             <br/>
                             <span>{post.body}</span>
@@ -120,8 +123,8 @@ export function PostsList(){
                 }
             </div>
                 <Col md={{offset: 1,span: 10}}>
-                   {customers.length > 0 ? <div style={{position: "relative",display: "flex", width: "1000px",height: "max-content",flexWrap: 'wrap',alignContent: "flex-start"}}>{customers.map((customer,index)=>(
-                        <div key={index} style={{float: "left",position: 'relative',cursor: "text",borderStyle: 'solid', borderRadius: '3px',borderWidth: '1px', padding: '5px',width: "497px",marginTop: '3px',marginLeft: '3px'}} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>
+                   {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((customer,index)=>(
+                        <div key={index} className={MainPageStyle.userInfo} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>
                             <h6> name: </h6>  {customer.name}
                             <br/>
                             <h6> phone: </h6>  {customer.phone}

@@ -13,7 +13,7 @@ export const fetchCustomers = () => {
 export const fetchPostsOfCustomer = (customer) => {
     console.log(customer)
     return dispatch => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts?id=${customer.id}`)
+        axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${customer.id}`)
             .then((response) => {
                 console.log(response.data)
                 dispatch(fetchCustomerPostsAction(response.data))
