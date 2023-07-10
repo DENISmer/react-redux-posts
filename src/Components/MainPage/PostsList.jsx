@@ -108,21 +108,8 @@ export function PostsList(){
 
                 </Col>
             </Row>
-            <Row><div className={MainPageStyle.userPostsList}>
-                {posts && posts.title}
-                {posts && posts.map((post,index)=>(<div className={MainPageStyle.postDescription} key={index}>
-                        {'user id: ' + post.userId}
-                        <br/>
-                        {'post id: ' + post.id}
-                            <h4>{post.title}</h4>
-                            <br/>
-                            <span>{post.body}</span>
-                        </div>
-                    )
-                )
-                }
-            </div>
-                <Col md={{offset: 1,span: 10}}>
+            <Row>
+                <Col md={{offset: 1,span: 7}}>
                    {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((customer,index)=>(
                         <div key={index} className={MainPageStyle.userInfo} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>
                             <h6> name: </h6>  {customer.name}
@@ -141,6 +128,22 @@ export function PostsList(){
                             <br/>
                         </div>
                 ))}</div> : <div>клиенты отсутствуют</div>}
+                </Col>
+                <Col md={{offset: 1,span: 3}}>
+                    <div className={MainPageStyle.userPostsList}>
+                        {posts && posts.title}
+                        {posts && posts.map((post,index)=>(<div className={MainPageStyle.postDescription} key={index}>
+                                    {'user id: ' + post.userId}
+                                    <br/>
+                                    {'post id: ' + post.id}
+                                    <h4>{post.title}</h4>
+                                    <br/>
+                                    <span>{post.body}</span>
+                                </div>
+                            )
+                        )
+                        }
+                    </div>
                 </Col>
 
             </Row>
