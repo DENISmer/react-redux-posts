@@ -129,10 +129,12 @@ export function PostsList(){
                         </div>
                 ))}</div> : <div>клиенты отсутствуют</div>}
                 </Col>
-                <Col md={{offset: 1,span: 3}}>
-                    <div className={MainPageStyle.userPostsList}>
+                {posts.length > 0 && <Col md={{offset: 1,span: 3}}>
+
+                     <div className={MainPageStyle.userPostsList}>
                         {posts && posts.title}
-                        {posts && posts.map((post,index)=>(<div className={MainPageStyle.postDescription} key={index}>
+                        {posts && posts.map((post, index) => (
+                                <div  key={index}>
                                     {'user id: ' + post.userId}
                                     <br/>
                                     {'post id: ' + post.id}
@@ -144,7 +146,7 @@ export function PostsList(){
                         )
                         }
                     </div>
-                </Col>
+                </Col>}
 
             </Row>
             </Container>
