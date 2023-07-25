@@ -90,17 +90,6 @@ export function PostsList(){
                     </form>
                 </Col>
                 <Col md={{offset: 1,span: 5}}>
-                    <Button style={{margin: '3px'}} onClick={() => {addCash(Number(prompt()))}}>add cash</Button>
-
-                    <Button style={{margin: '3px'}} onClick={() => {getCash(Number(prompt()))}}>get cash</Button>
-
-                    <Button style={{margin: '3px'}} onClick={() => {addCustomer(prompt())}}>add customer</Button>
-
-                    <Button style={{margin: '3px'}} onClick={() => {getCustomer(prompt())}}>get customer</Button>
-
-                    <Button style={{margin: '3px'}} onClick={() => {increment()}}>+</Button>
-
-                    <Button style={{margin: '3px'}} onClick={() => {decrement()}}>-</Button>
 
                     <Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>
 
@@ -111,8 +100,8 @@ export function PostsList(){
             <Row>
                 <Col md={{offset: 1,span: 7}}>
                    {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((customer,index)=>(
-                        <div key={index} className={MainPageStyle.userInfo} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>
-                            <h6> name: </h6>  {customer.name}
+                        <div key={index} className={posts[0] && posts[0].userId === index + 1 ? MainPageStyle.userInfoActive : MainPageStyle.userInfo} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>
+                            <h6>{customer.name}</h6>
                             <br/>
                             <h6> phone: </h6>  {customer.phone}
                             <br/>
@@ -135,7 +124,7 @@ export function PostsList(){
                         {posts && posts.title}
                         {posts && posts.map((post, index) => (
                                 <div  key={index}>
-                                    {'user id: ' + post.userId}
+                                    {'user id: ' + post ? post.userId : null}
                                     <br/>
                                     {'post id: ' + post.id}
                                     <h4>{post.title}</h4>

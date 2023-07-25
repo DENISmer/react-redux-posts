@@ -1,24 +1,23 @@
 .userList{
     position: relative;
     display: flex;
-    width: 810px;
+    width: 820px;
     height: max-content;
     flex-wrap: wrap;
     align-content: flex-start;
 }
-
 .userInfo{
     cursor: default;
     z-index: 10;
     float: left;
     position: relative;
-    border-style: solid;
     border-radius: 3px;
-    border-width: 1px;
     padding: 5px;
-    width: 400px;
-    margin-top: 3px;
-    margin-left: 3px;
+    width: 390px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background: rgba(225, 225, 234, 0.77);
+    box-shadow: 2px 2px 7px rgba(58, 58, 58, 0.79);
     transition: 0.5s;
 }
 .userInfo:hover{
@@ -28,21 +27,36 @@
     background: rgba(166, 166, 246, 0.69);
     transition: 0.5s;
 }
-
+.userInfoActive{
+    font-size: 17px;
+    padding: 10px;
+    color: #daddec;
+    background: rgba(66, 66, 190, 0.92);
+    transition: 0.2s;
+    cursor: default;
+    z-index: 10;
+    float: left;
+    position: relative;
+    border-radius: 3px;
+    width: 390px;
+    margin-top: 20px;
+    margin-left: 20px;
+    box-shadow: 2px 2px 7px rgba(58, 58, 58, 0.79);
+}
 .userPostsList{
+    position: fixed;
+    right: 20vw;
+    top: 13vh;
     display: flex;
     border: solid;
     flex-wrap: wrap;
     width: 310px;
     flex-shrink: 1;
-    height: 500px;
+    height: 400px;
     overflow-y: scroll;
     border-radius: 8px;
-    position: relative;
-    right: 30px;
     background: aquamarine;
     z-index: 1000;
-
 }
 .userPostsList::-webkit-scrollbar-track {
     /*border: 1px solid #000;*/
@@ -54,7 +68,6 @@
 .userPostsList::-webkit-scrollbar {
     width: 10px;
 }
-
 .userPostsList::-webkit-scrollbar-thumb {
     border-radius: 10px;
     /*box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
@@ -69,11 +82,10 @@
     flex-basis: 300px;
     width: 300px;
     border-radius: 8px;
-    border-width: 1px;
-    border-style: solid;
+    background-color: rgba(106, 211, 175, 0.74);
     padding: 5px;
     margin: 5px;
-    transition: 1s;
+    transition: 0.5s;
 }
 .userPostsList>div:hover{
     color: #dbe0e8;
@@ -89,6 +101,34 @@
         height: max-content;
         flex-wrap: wrap;
         align-content: flex-start;
+        top: 50vh;
+    }
+    .userPostsList{
+        position: fixed;
+        right: 22vw;
+        top: 35vh;
+        display: flex;
+        border: solid;
+        flex-wrap: wrap;
+        width: 390px;
+        flex-shrink: 1;
+        height: 300px;
+        overflow-y: scroll;
+        border-radius: 8px;
+        background: aquamarine;
+        z-index: 1000;
+    }
+    .userPostsList>div{
+        display: inline-flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        flex-basis: 390px;
+        width: 300px;
+        border-radius: 8px;
+        background-color: rgba(106, 211, 175, 0.74);
+        padding: 5px;
+        margin: 5px;
+        transition: 0.5s;
     }
     
 }

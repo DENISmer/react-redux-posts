@@ -15,7 +15,7 @@ export const customerReducer = (state = defaultState, action) => {
             console.log(action.payload)
             return {...state,posts: [...action.payload]}
         case REQUEST_CUSTOMERS:
-            return {...state,customers: [...state.customers, ...action.payload]}
+            return {...state,customers: [...action.payload]}
         case ADD_CUSTOMER:
             return {...state,customers: [...state.customers, action.payload]}
         case REMOVE_CUSTOMER:
