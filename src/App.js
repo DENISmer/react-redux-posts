@@ -5,7 +5,7 @@ import {PostsList} from "./Components/MainPage/PostsList";
 import {Container} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {AboutMe} from "./Components/AboutMe";
-import {Header} from "./Components/Header";
+import {Header} from "./Components/Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 
 function App() {

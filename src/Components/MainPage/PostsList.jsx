@@ -1,6 +1,6 @@
 import 'react-bootstrap'
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
-import {Header} from "../Header";
+import {Header} from "../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {addCashAction, getCashAction} from "../../store/cashReducer";
@@ -13,6 +13,8 @@ import {
 import {decrementCreator, incrementCreator} from "../saga/countReducer";
 import {fetchCustomers, fetchPostsOfCustomer} from "../../requests/customers";
 import MainPageStyle from './PostsList.module.css'
+import {Footer} from "../Footer/Footer";
+
 
 export function PostsList(){
 
@@ -72,24 +74,26 @@ export function PostsList(){
     return <>
     <div className={MainPageStyle.page}>
         <Header />
-        <br/>
-        <form className={MainPageStyle}>
-            <Form.Group>
-                <Form.Label htmlFor="inputPassword5">Password</Form.Label>
-                <Form.Control
-                    type={"number"}
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                />
+        <div className={MainPageStyle.leftIndent}>left indent</div>
+        <div className={MainPageStyle.rightIndent}>right indent</div>
+        <Footer />
+        {/*<form className={MainPageStyle}>*/}
+        {/*    <Form.Group>*/}
+        {/*        <Form.Label htmlFor="inputPassword5">Password</Form.Label>*/}
+        {/*        <Form.Control*/}
+        {/*            type={"number"}*/}
+        {/*            value={inputValue}*/}
+        {/*            onChange={(e) => setInputValue(e.target.value)}*/}
+        {/*            id="inputPassword5"*/}
+        {/*            aria-describedby="passwordHelpBlock"*/}
+        {/*        />*/}
 
-            </Form.Group>
-        </form>
+        {/*    </Form.Group>*/}
+        {/*</form>*/}
 
-        <Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>
+        {/*<Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>*/}
 
-        <Button style={{margin: '3px'}} onClick={() => {dispatch(fetchCustomers())}}>request customers</Button>
+        {/*<Button style={{margin: '3px'}} onClick={() => {dispatch(fetchCustomers())}}>request customers</Button>*/}
 
         {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((customer,index)=>(
             <div key={index} className={posts[0] && posts[0].userId === index + 1 ? MainPageStyle.userInfoActive : MainPageStyle.userInfo} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>

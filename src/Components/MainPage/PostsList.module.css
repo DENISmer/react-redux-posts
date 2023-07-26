@@ -1,11 +1,14 @@
 .page{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr 3fr 1fr;
 }
 .userList{
+    background-color: cadetblue;
     grid-column-start: 2;
-    grid-column-end: 3;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
     position: relative;
     display: flex;
     width: 820px;
@@ -28,15 +31,15 @@
     transition: 0.5s;
 }
 .userInfo:hover{
-    font-size: 17px;
-    padding: 10px;
+    /*font-size: 17px;*/
+    /*padding: 10px;*/
     color: #003381;
     background: rgba(166, 166, 246, 0.69);
-    transition: 0.5s;
+    /*transition: 0.5s;*/
 }
 .userInfoActive{
     font-size: 17px;
-    padding: 10px;
+    /*padding: 10px;*/
     color: #daddec;
     background: rgba(66, 66, 190, 0.92);
     transition: 0.2s;
@@ -49,6 +52,20 @@
     margin-top: 20px;
     margin-left: 20px;
     box-shadow: 2px 2px 7px rgba(58, 58, 58, 0.79);
+}
+.leftIndent{
+    background-color: aquamarine;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+.rightIndent{
+    background-color: aquamarine;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
 }
 .userPostsList{
     position: fixed;

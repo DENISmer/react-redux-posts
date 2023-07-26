@@ -1,5 +1,5 @@
 import {Button, Container} from "react-bootstrap";
-import {Header} from "./Header";
+import {Header} from "./Header/Header";
 
 export function AboutMe(){
     return <>
