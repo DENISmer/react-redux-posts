@@ -70,75 +70,64 @@ export function PostsList(){
     },[])
 
     return <>
-        <Container>
-            <Header />
-            <br/>
-            <Row>
-                <Col md={"2"}>
-                    <form className={MainPageStyle}>
-                        <Form.Group>
-                            <Form.Label htmlFor="inputPassword5">Password</Form.Label>
-                            <Form.Control
-                                type={"number"}
-                                value={inputValue}
-                                onChange={(e) => setInputValue(e.target.value)}
-                                id="inputPassword5"
-                                aria-describedby="passwordHelpBlock"
-                            />
+    <div className={MainPageStyle.page}>
+        <Header />
+        <br/>
+        <form className={MainPageStyle}>
+            <Form.Group>
+                <Form.Label htmlFor="inputPassword5">Password</Form.Label>
+                <Form.Control
+                    type={"number"}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    id="inputPassword5"
+                    aria-describedby="passwordHelpBlock"
+                />
 
-                        </Form.Group>
-                    </form>
-                </Col>
-                <Col md={{offset: 1,span: 5}}>
+            </Form.Group>
+        </form>
 
-                    <Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>
+        <Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>
 
-                    <Button style={{margin: '3px'}} onClick={() => {dispatch(fetchCustomers())}}>request customers</Button>
+        <Button style={{margin: '3px'}} onClick={() => {dispatch(fetchCustomers())}}>request customers</Button>
 
-                </Col>
-            </Row>
-            <Row>
-                <Col md={{offset: 1,span: 7}}>
-                   {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((customer,index)=>(
-                        <div key={index} className={posts[0] && posts[0].userId === index + 1 ? MainPageStyle.userInfoActive : MainPageStyle.userInfo} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>
-                            <h6>{customer.name}</h6>
+        {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((customer,index)=>(
+            <div key={index} className={posts[0] && posts[0].userId === index + 1 ? MainPageStyle.userInfoActive : MainPageStyle.userInfo} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>
+                <h6>{customer.name}</h6>
+                <br/>
+                <h6> phone: </h6>  {customer.phone}
+                <br/>
+                <h6> email: </h6>  {customer.email}
+                <br/>
+                <h6>website:  </h6>  {customer.website}
+                <br/>
+                <h6> company name: </h6>  {customer.company.name}
+                <br/>
+                <h6> chatch phrase: </h6> {customer.company.catchPhrase}
+                <br/>
+                <h6> city: </h6>{customer.address.city}
+                <br/>
+            </div>
+        ))}</div> : <div>клиенты отсутствуют</div>}
+        {posts.length > 0 &&
+            <div className={MainPageStyle.userPostsList}>
+                {posts && posts.title}
+                {posts && posts.map((post, index) => (
+                        <div  key={index}>
+                            {'user id: ' + post ? post.userId : null}
                             <br/>
-                            <h6> phone: </h6>  {customer.phone}
+                            {'post id: ' + post.id}
+                            <h4>{post.title}</h4>
                             <br/>
-                            <h6> email: </h6>  {customer.email}
-                            <br/>
-                            <h6>website:  </h6>  {customer.website}
-                            <br/>
-                            <h6> company name: </h6>  {customer.company.name}
-                            <br/>
-                            <h6> chatch phrase: </h6> {customer.company.catchPhrase}
-                            <br/>
-                            <h6> city: </h6>{customer.address.city}
-                            <br/>
+                            <span>{post.body}</span>
                         </div>
-                ))}</div> : <div>клиенты отсутствуют</div>}
-                </Col>
-                {posts.length > 0 && <Col md={{offset: 1,span: 3}}>
+                    )
+                )
+                }
+            </div>
+        }
 
-                     <div className={MainPageStyle.userPostsList}>
-                        {posts && posts.title}
-                        {posts && posts.map((post, index) => (
-                                <div  key={index}>
-                                    {'user id: ' + post ? post.userId : null}
-                                    <br/>
-                                    {'post id: ' + post.id}
-                                    <h4>{post.title}</h4>
-                                    <br/>
-                                    <span>{post.body}</span>
-                                </div>
-                            )
-                        )
-                        }
-                    </div>
-                </Col>}
-
-            </Row>
-            </Container>
+    </div>
 
     </>
 }

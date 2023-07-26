@@ -7,6 +7,9 @@ export const fetchCustomers = () => {
             .then((response) => {
                 dispatch(fetchCustomersAction(response.data))
             })
+            .catch((e) => {
+                alert(`Возникла ошибка: \n${e.message }`)
+            })
     }
 }
 
@@ -17,6 +20,9 @@ export const fetchPostsOfCustomer = (customer) => {
             .then((response) => {
                 console.log(response.data)
                 dispatch(fetchCustomerPostsAction(response.data))
+            })
+            .catch((e)=> {
+                alert(`Возникла ошибка: \n${e.message }`)
             })
     }
 }

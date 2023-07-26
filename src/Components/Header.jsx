@@ -17,10 +17,7 @@ export function Header(){
         </a>
     ));
     return <>
-        <header style={{borderStyle: "solid",borderRadius: '5px',top: "2vh",position: "relative"}}>
-            <Container>
-                <Row>
-                    <Col md={{ span: 1, offset: 0 }}>
+        <header style={{gridColumnStart: 1,gridColumnEnd: 4,gridRowStart: 1,gridRowEnd: 4}}>
                         <Dropdown >
                             <Dropdown.Toggle as={CustomToggle} id="dropdown-basic">
                                 react-redux-posts
@@ -44,10 +41,6 @@ export function Header(){
                                 </Dropdown.ItemText>
                             </Dropdown.Menu>
                         </Dropdown>
-                    </Col>
-                    <Col md={{ span: 2, offset: 4 }}><h4 style={{fontFamily: 'sans-serif',marginTop: "4px"}}>React-redux-app</h4></Col>
-                </Row>
-            </Container>
         </header>
 
     </>
