@@ -6,6 +6,8 @@ import {customerReducer} from "./customerReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {countReducer} from "../Components/saga/countReducer";
 import thunk from "redux-thunk";
+import {requestForPostComments} from "../requests/customers";
+import {requestCommentsReducer} from "./commentsRequests";
 
 const defaultRequest = async () => {
     await axios.get(URL_S.ALL_POST)
@@ -13,6 +15,7 @@ const defaultRequest = async () => {
 
 
 const rootReducer = combineReducers({
+    comments: requestCommentsReducer,
     count: countReducer,
     modalPost: modalWindowReducer,
     customers: customerReducer,

@@ -15,18 +15,19 @@ import {fetchCustomers, fetchPostsOfCustomer} from "../../requests/customers";
 import MainPageStyle from './PostsList.module.css'
 import {Footer} from "../Footer/Footer";
 import {ModalPostWindow} from "../modalPostWindow/ModalPostWindow";
+import commentIcon from '../../data/icons/main page/comments.svg'
 
 
 export function PostsList(){
 
     const dispatch = useDispatch()
 
-    const modalState = useSelector(state => state.modalPost.active);
+    const modalState = useSelector(state => state.modalPost);
     const customers = useSelector(state => state.customers.customers);
     const posts = useSelector(state => state.customers.posts);
     const count = useSelector(state => state.count.count);
 
-    const [inputValue,setInputValue] = useState(0);
+    const [currentPost,setCurrentPost] = useState({title: '',body:'',id: 0});
 
 
 
@@ -70,28 +71,35 @@ export function PostsList(){
     },[])
 
     return <>
-        {modalState ? <ModalPostWindow /> : null}
+
     <div className={MainPageStyle.page}>
         <Header />
+
         <div className={MainPageStyle.leftIndent}>left indent</div>
         <div className={MainPageStyle.rightIndent}>right indent</div>
 
+        {modalState.active ? <ModalPostWindow /> : null}
 
         {/*<Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>*/}
 
         {/*<Button style={{margin: '3px'}} onClick={() => {dispatch(fetchCustomers())}}>request customers</Button>*/}
 
         {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((post,index)=>(
-            <div key={index} className={MainPageStyle.userInfo} onClick={()=> {
-                setEnableModal(!modalState)
+            <div key={post.id} className={MainPageStyle.userInfo} onClick={()=> {
+                setEnableModal({active: !modalState.active,
+                                title: post.title,
+                                body: post.body,
+                                postId: post.id});
+
+                //setCurrentPost({title: post.title,body: post.body, id: post.id})
             }}>
-                <h6>{post.name}</h6>
                 <br/>
-                <h6> phone: </h6>  {post.title}
+                <h4>{post.title}</h4>
                 <br/>
-                <h6> email: </h6>  {post.body}
+                <h5>{post.body}</h5>
                 <br/><br/>
-                <button>comments</button>
+                <button><img src={commentIcon} width={'20px'}/></button>
+
             </div>
         ))}</div> : <div>клиенты отсутствуют</div>}
         {posts.length > 0 &&
