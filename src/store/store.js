@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import axios from "axios";
 import {URL_S} from "../config";
-import {cashReducer} from "./cashReducer";
+import { modalWindowReducer} from "./cashReducer";
 import {customerReducer} from "./customerReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {countReducer} from "../Components/saga/countReducer";
@@ -14,7 +14,7 @@ const defaultRequest = async () => {
 
 const rootReducer = combineReducers({
     count: countReducer,
-    cash: cashReducer,
+    modalPost: modalWindowReducer,
     customers: customerReducer,
 })
 

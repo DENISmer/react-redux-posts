@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchCustomers = () => {
     return dispatch => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('https://jsonplaceholder.typicode.com/posts')
             .then((response) => {
                 dispatch(fetchCustomersAction(response.data))
             })

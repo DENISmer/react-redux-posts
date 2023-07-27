@@ -3,7 +3,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {Header} from "../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {addCashAction, getCashAction} from "../../store/cashReducer";
+import {setEnableAction, setDisableAction} from "../../store/cashReducer";
 import {
     addCustomerAction, fetchCustomerPostsAction,
     fetchCustomersAction,
@@ -14,13 +14,14 @@ import {decrementCreator, incrementCreator} from "../saga/countReducer";
 import {fetchCustomers, fetchPostsOfCustomer} from "../../requests/customers";
 import MainPageStyle from './PostsList.module.css'
 import {Footer} from "../Footer/Footer";
+import {ModalPostWindow} from "../modalPostWindow/ModalPostWindow";
 
 
 export function PostsList(){
 
     const dispatch = useDispatch()
 
-    const cash = useSelector(state => state.cash.cash);
+    const modalState = useSelector(state => state.modalPost.active);
     const customers = useSelector(state => state.customers.customers);
     const posts = useSelector(state => state.customers.posts);
     const count = useSelector(state => state.count.count);
@@ -29,11 +30,8 @@ export function PostsList(){
 
 
 
-    const addCash = (cash) => {
-        dispatch(addCashAction(cash))
-    }
-    const getCash = (cash) =>{
-        dispatch(getCashAction(cash))
+    const setEnableModal = (modalState) => {
+        dispatch(setEnableAction(modalState))
     }
 
 
@@ -72,45 +70,28 @@ export function PostsList(){
     },[])
 
     return <>
+        {modalState ? <ModalPostWindow /> : null}
     <div className={MainPageStyle.page}>
         <Header />
         <div className={MainPageStyle.leftIndent}>left indent</div>
         <div className={MainPageStyle.rightIndent}>right indent</div>
-        <Footer />
-        {/*<form className={MainPageStyle}>*/}
-        {/*    <Form.Group>*/}
-        {/*        <Form.Label htmlFor="inputPassword5">Password</Form.Label>*/}
-        {/*        <Form.Control*/}
-        {/*            type={"number"}*/}
-        {/*            value={inputValue}*/}
-        {/*            onChange={(e) => setInputValue(e.target.value)}*/}
-        {/*            id="inputPassword5"*/}
-        {/*            aria-describedby="passwordHelpBlock"*/}
-        {/*        />*/}
 
-        {/*    </Form.Group>*/}
-        {/*</form>*/}
 
         {/*<Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>*/}
 
         {/*<Button style={{margin: '3px'}} onClick={() => {dispatch(fetchCustomers())}}>request customers</Button>*/}
 
-        {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((customer,index)=>(
-            <div key={index} className={posts[0] && posts[0].userId === index + 1 ? MainPageStyle.userInfoActive : MainPageStyle.userInfo} onClick={()=> dispatch(fetchPostsOfCustomer(customer))}>
-                <h6>{customer.name}</h6>
+        {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((post,index)=>(
+            <div key={index} className={MainPageStyle.userInfo} onClick={()=> {
+                setEnableModal(!modalState)
+            }}>
+                <h6>{post.name}</h6>
                 <br/>
-                <h6> phone: </h6>  {customer.phone}
+                <h6> phone: </h6>  {post.title}
                 <br/>
-                <h6> email: </h6>  {customer.email}
-                <br/>
-                <h6>website:  </h6>  {customer.website}
-                <br/>
-                <h6> company name: </h6>  {customer.company.name}
-                <br/>
-                <h6> chatch phrase: </h6> {customer.company.catchPhrase}
-                <br/>
-                <h6> city: </h6>{customer.address.city}
-                <br/>
+                <h6> email: </h6>  {post.body}
+                <br/><br/>
+                <button>comments</button>
             </div>
         ))}</div> : <div>клиенты отсутствуют</div>}
         {posts.length > 0 &&
@@ -130,7 +111,7 @@ export function PostsList(){
                 }
             </div>
         }
-
+        <Footer />
     </div>
 
     </>

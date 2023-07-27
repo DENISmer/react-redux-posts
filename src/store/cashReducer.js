@@ -1,22 +1,22 @@
 
 
 const defaultState = {
-    cash: 5,
+    active: false,
 }
 
-const ADD_CASH = "ADD_CASH";
-const GET_CASH = "GET_CASH";
+const SET_ENABLE = "SET_ENABLE";
+const SET_DISABLE = "SET_DISABLE";
 
-export const cashReducer = (state = defaultState, action) => {
+export const modalWindowReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case ADD_CASH:
-            return {...state,cash: state.cash + action.payload}
-        case GET_CASH:
-            return {...state,cash: state.cash - action.payload}
+        case SET_ENABLE:
+            return {active: true}
+        case SET_DISABLE:
+            return {active: false}
         default:
             return state
     }
 }
 
-export const addCashAction = (payload) => ({type: ADD_CASH, payload})
-export const getCashAction = (payload) => ({type: GET_CASH,payload})
+export const setEnableAction = (payload) => ({type: SET_ENABLE, payload})
+export const setDisableAction = (payload) => ({type: SET_DISABLE,payload})

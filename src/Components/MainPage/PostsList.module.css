@@ -11,24 +11,33 @@
     grid-row-end: 2;
     position: relative;
     display: flex;
-    width: 820px;
     height: max-content;
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }
 .userInfo{
     cursor: default;
     z-index: 10;
     float: left;
     position: relative;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 5px;
-    width: 390px;
+    width: 800px;
     margin-top: 20px;
-    margin-left: 20px;
     background: rgba(225, 225, 234, 0.77);
     box-shadow: 2px 2px 7px rgba(58, 58, 58, 0.79);
-    transition: 0.5s;
+    transition: 0.3s;
+}
+.userInfo>button{
+    border-style: hidden;
+    background: rgba(225, 225, 234, 0.77);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+.userInfo>button:hover{
+    background-color: burlywood;
 }
 .userInfo:hover{
     /*font-size: 17px;*/
@@ -36,22 +45,6 @@
     color: #003381;
     background: rgba(166, 166, 246, 0.69);
     /*transition: 0.5s;*/
-}
-.userInfoActive{
-    font-size: 17px;
-    /*padding: 10px;*/
-    color: #daddec;
-    background: rgba(66, 66, 190, 0.92);
-    transition: 0.2s;
-    cursor: default;
-    z-index: 10;
-    float: left;
-    position: relative;
-    border-radius: 3px;
-    width: 390px;
-    margin-top: 20px;
-    margin-left: 20px;
-    box-shadow: 2px 2px 7px rgba(58, 58, 58, 0.79);
 }
 .leftIndent{
     background-color: aquamarine;
