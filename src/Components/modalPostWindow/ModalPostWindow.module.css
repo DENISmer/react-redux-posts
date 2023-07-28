@@ -9,12 +9,14 @@
     justify-content: center;
 }
 .postBody{
-    width: 60%;
-    height: 70%;
+    width: 50%;
+    height: 60%;
     position: absolute;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
+    padding: 2%;
+    flex-direction: column;
     z-index: 1001;
     background-color: #282c34;
     border-radius: 10px;
@@ -23,4 +25,10 @@
 }
 .postBody:hover{
     background-color: rgba(37, 67, 143, 0.75);
+}
+.comments{
+    border-radius: 5px;
+    padding: 2%;
+    max-height: 15%;
+    background-color: rgba(151, 166, 187, 0.45);
 }

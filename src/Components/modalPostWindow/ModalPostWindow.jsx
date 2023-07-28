@@ -24,10 +24,16 @@ export function ModalPostWindow(props){
                 title: '',
                 body: '',
                 postId: ''})}>
-                <h2>MODAL WINDOW
-                    <br/>
-                    {modalState.title}
-                    <br/>{comments[0].name}</h2>
+                <h2>{modalState.title}</h2>
+                <div>________________________________________________________</div>
+                <br/>
+                <h4>{modalState.body}</h4>
+                <br/>
+                <div>________________________________________________________</div>
+                <br/>
+                <div className={modalStyle.comments}>{comments[0].name}</div>
+
+                    {/*<br/>{comments[0].body}*/}
 
             </div>
         </div>
