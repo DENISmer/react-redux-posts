@@ -9,18 +9,29 @@
     justify-content: center;
 }
 .postBody{
+    min-height: 100px;
+    background-color: rgba(91, 95, 103, 0.23);
+    padding: 2%;
+    overflow-y: auto;
+    border-radius: 8px;
+
+}
+.postBody:hover{
+    /*background-color: rgba(29, 47, 93, 0.99);*/
+}
+.postContent{
+    padding: 3%;
     width: 60%;
     height: 70%;
     position: absolute;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
+    flex-direction: column;
     z-index: 1001;
     background-color: #282c34;
     border-radius: 10px;
     color: #dbe0e8;
     transition: 0.2s;
-}
-.postBody:hover{
-    background-color: rgba(37, 67, 143, 0.75);
+
 }

@@ -1,0 +1,32 @@
+.allComments{
+    border-radius: 5px;
+    position: relative;
+    padding: 3%;
+
+    max-width: 700px;
+    width: max-content;
+    min-width: 100px;
+
+    max-height: 300px;
+    height: 300px;
+    min-height: 50px;
+
+    margin-top: 2%;
+    background-color: rgba(97, 218, 251, 0.16);
+    overflow-y: auto;
+
+}
+.commentItem{
+    max-width: 650px;
+    width: 650px;
+
+    max-height: 200px;
+    height: max-content;
+    min-height: 30px;
+    display: flex;
+    padding: 3px;
+    border-radius: 3px;
+    margin-top: 10px;
+    background-color: rgba(47, 41, 41, 0.78);
+    overflow-y: auto;
+}
