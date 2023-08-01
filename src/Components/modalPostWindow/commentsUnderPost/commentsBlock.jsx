@@ -21,6 +21,10 @@ export function CommentsBlock(props){
                     {comment.body}
                 </div>
             ))}
+            <div className={commentsStyle.commentTextArea}>
+                <input type={"text"}/>
+                <button>send</button>
+            </div>
         </div>
     )
 }

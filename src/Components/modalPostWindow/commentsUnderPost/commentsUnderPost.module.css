@@ -1,24 +1,25 @@
 .allComments{
+    position: sticky;
     border-radius: 5px;
-    position: relative;
-    padding: 3%;
+    padding: 1%;
+    bottom: 100px;
+    margin: 10px;
 
     max-width: 700px;
-    width: max-content;
+    /*width: max-content;*/
     min-width: 100px;
 
     max-height: 300px;
     height: 300px;
     min-height: 50px;
-
-    margin-top: 2%;
     background-color: rgba(97, 218, 251, 0.16);
     overflow-y: auto;
+    overflow-x: hidden;
 
 }
 .commentItem{
-    max-width: 650px;
-    width: 650px;
+    max-width: 620px;
+    /*width: 620px;*/
 
     max-height: 200px;
     height: max-content;
@@ -29,4 +30,17 @@
     margin-top: 10px;
     background-color: rgba(47, 41, 41, 0.78);
     overflow-y: auto;
+}
+.commentTextArea{
+    position: sticky;
+    bottom: -5px;
+}
+.commentTextArea>input{
+    width: 80%;
+    max-width: 90%;
+}
+.commentTextArea>button{
+    margin-left: 1%;
+    border-radius: 5px;
+    height: 33px;
 }

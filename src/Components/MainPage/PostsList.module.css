@@ -5,6 +5,13 @@
     grid-template-rows: 500px 2fr 300px;
     background-color: rgba(117, 195, 222, 0.64);
 }
+.activeModal{
+    font-family: Geneva ;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 500px 2fr 300px;
+    background-color: rgba(117, 195, 222, 0.64);
+}
 .userList{
     /*background-color: cadetblue;*/
     grid-column-start: 2;

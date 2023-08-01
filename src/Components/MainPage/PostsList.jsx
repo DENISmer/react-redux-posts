@@ -30,7 +30,6 @@ export function PostsList(){
     const [currentPost,setCurrentPost] = useState({title: '',body:'',id: 0});
 
 
-
     const setEnableModal = (modalState) => {
         dispatch(setEnableAction(modalState))
     }
@@ -71,14 +70,15 @@ export function PostsList(){
     },[])
 
     return <>
+        {modalState.active ? <ModalPostWindow /> : null}
 
-    <div className={MainPageStyle.page}>
+    <div className={modalState.active ? MainPageStyle.activeModal : MainPageStyle.page}>
         <Header />
 
         <div className={MainPageStyle.leftIndent}>left indent</div>
         <div className={MainPageStyle.rightIndent}>right indent</div>
 
-        {modalState.active ? <ModalPostWindow /> : null}
+
 
         {/*<Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>*/}
 
