@@ -1,12 +1,12 @@
 .NavBarWindow{
     position: fixed;
-    top: 11%;
+    top: 20%;
     left: 10%;
     width: 12%;
     height: 300px;
-    z-index: 1000;
+    z-index: 1;
     background-color: #61dafb;
-    border-radius: 5px;
+    border-radius: 9px;
     border: seagreen solid 1px;
 }
 .NavBarContent{
@@ -19,5 +19,9 @@
     justify-content: center;
 }
 .NavBarBody>button{
+    border-radius: 5px;
     margin-top: 15px;
+    max-width: 80%;
+    width: 80%;
+    background-color: #d2dde8;
 }

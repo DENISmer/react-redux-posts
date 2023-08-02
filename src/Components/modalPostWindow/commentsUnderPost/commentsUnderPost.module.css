@@ -25,7 +25,8 @@
     height: max-content;
     min-height: 30px;
     display: flex;
-    padding: 3px;
+    flex-direction: column;
+    padding: 5px;
     border-radius: 3px;
     margin-top: 10px;
     background-color: rgba(47, 41, 41, 0.78);
@@ -44,3 +45,16 @@
     border-radius: 5px;
     height: 33px;
 }
+.commentUserMail{
+    max-width: max-content;
+    padding: 3px;
+    border-radius: 3px;
+    /*border: 1px #61dafb solid ;*/
+    transition: 0.5s;
+    margin-bottom: 1%;
+}
+.commentUserMail:hover{
+    background-color: rgba(97, 218, 251, 0.22);
+    cursor: default;
+}
+

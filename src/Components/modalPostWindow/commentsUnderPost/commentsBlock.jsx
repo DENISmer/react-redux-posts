@@ -14,7 +14,10 @@ export function CommentsBlock(props){
         <div className={commentsStyle.allComments}>
             {props.comments && props.comments.map((comment,index)=>(
                 <div className={commentsStyle.commentItem} key={index}>
-                    {comment.email}
+                    <div className={commentsStyle.commentUserMail}>
+                        {comment.email}
+                    </div>
+
                     <br/>
                     {comment.name}
                     <br/>

@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import {requestForPostComments} from "../../requests/customers";
 import {removeCommentsAction, requestCommentsAction} from "../../store/commentsRequests";
 import {CommentsBlock} from "./commentsUnderPost/commentsBlock";
+import closeIcon from '../../data/icons/buttons/closeButton.png'
 
 export function ModalPostWindow(props){
     const dispatch = useDispatch()
@@ -23,11 +24,12 @@ export function ModalPostWindow(props){
     }
     return(<>
         <div className={modalStyle.window}>
+            <div className={modalStyle.closeButton} onClick={()=> setDisableModal({active: !modalState.active,
+                title: '',
+                body: '',
+                postId: ''})}><img alt={null} src={closeIcon}/></div>
             <div className={modalStyle.postContent}>
-                <div className={modalStyle.postBody} onClick={()=> setDisableModal({active: !modalState.active,
-                    title: '',
-                    body: '',
-                    postId: ''})}>
+                <div className={modalStyle.postBody} >
 
                     <h4>
                         {modalState.title}

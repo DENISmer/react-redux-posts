@@ -33,7 +33,7 @@
     position: relative;
     border-radius: 5px;
     padding: 5px;
-    width: 900px;
+    width: 80%;
     margin-top: 20px;
     background: rgba(225, 225, 234, 0.77);
     box-shadow: 2px 2px 7px rgba(58, 58, 58, 0.79);
@@ -117,41 +117,6 @@
 }
 
 @media screen and (width < 1000px) {
-    .userList{
-        position: relative;
-        display: flex;
-        width: 500px;
-        height: max-content;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        top: 50vh;
-    }
-    .userPostsList{
-        position: fixed;
-        right: 22vw;
-        top: 35vh;
-        display: flex;
-        border: solid;
-        flex-wrap: wrap;
-        width: 390px;
-        flex-shrink: 1;
-        height: 300px;
-        overflow-y: scroll;
-        border-radius: 8px;
-        background: aquamarine;
-        z-index: 1000;
-    }
-    .userPostsList>div{
-        display: inline-flex;
-        justify-content: flex-start;
-        flex-direction: column;
-        flex-basis: 390px;
-        width: 300px;
-        border-radius: 8px;
-        background-color: rgba(106, 211, 175, 0.74);
-        padding: 5px;
-        margin: 5px;
-        transition: 0.5s;
-    }
+
     
 }

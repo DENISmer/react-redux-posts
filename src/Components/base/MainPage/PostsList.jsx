@@ -1,27 +1,30 @@
 import 'react-bootstrap'
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
-import {Header} from "../Header/Header";
+import {Header} from "../../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {setEnableAction, setDisableAction} from "../../store/cashReducer";
+import {setEnableAction, setDisableAction} from "../../../store/cashReducer";
 import {
     addCustomerAction, fetchCustomerPostsAction,
     fetchCustomersAction,
     removeAllCustomerAction,
     removeCustomerAction
-} from "../../store/customerReducer";
-import {decrementCreator, incrementCreator} from "../saga/countReducer";
-import {fetchCustomers, fetchPostsOfCustomer} from "../../requests/customers";
+} from "../../../store/customerReducer";
+import {decrementCreator, incrementCreator} from "../../saga/countReducer";
+import {fetchCustomers, fetchPostsOfCustomer} from "../../../requests/customers";
 import MainPageStyle from './PostsList.module.css'
-import {Footer} from "../Footer/Footer";
-import {ModalPostWindow} from "../modalPostWindow/ModalPostWindow";
-import commentIcon from '../../data/icons/main page/comments.svg'
-import {NavBar} from "../Navbar/NavBar";
+import {Footer} from "../../Footer/Footer";
+import {ModalPostWindow} from "../../modalPostWindow/ModalPostWindow";
+import commentIcon from '../../../data/icons/main page/comments.svg'
+import {NavBar} from "../../Navbar/NavBar";
+import {useNavigate} from "react-router";
 
 
 export function PostsList(){
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
     const modalState = useSelector(state => state.modalPost);
     const customers = useSelector(state => state.customers.customers);
@@ -103,23 +106,23 @@ export function PostsList(){
 
             </div>
         ))}</div> : <div>клиенты отсутствуют</div>}
-        {posts.length > 0 &&
-            <div className={MainPageStyle.userPostsList}>
-                {posts && posts.title}
-                {posts && posts.map((post, index) => (
-                        <div  key={index}>
-                            {'user id: ' + post ? post.userId : null}
-                            <br/>
-                            {'post id: ' + post.id}
-                            <h4>{post.title}</h4>
-                            <br/>
-                            <span>{post.body}</span>
-                        </div>
-                    )
-                )
-                }
-            </div>
-        }
+        {/*{posts.length > 0 &&*/}
+        {/*    <div className={MainPageStyle.userPostsList}>*/}
+        {/*        {posts && posts.title}*/}
+        {/*        {posts && posts.map((post, index) => (*/}
+        {/*                <div  key={index}>*/}
+        {/*                    {'user id: ' + post ? post.userId : null}*/}
+        {/*                    <br/>*/}
+        {/*                    {'post id: ' + post.id}*/}
+        {/*                    <h4>{post.title}</h4>*/}
+        {/*                    <br/>*/}
+        {/*                    <span>{post.body}</span>*/}
+        {/*                </div>*/}
+        {/*            )*/}
+        {/*        )*/}
+        {/*        }*/}
+        {/*    </div>*/}
+        {/*}*/}
         <Footer />
     </div>
 
