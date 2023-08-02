@@ -9,7 +9,7 @@
     justify-content: center;
 }
 .postBody{
-    min-height: 300px;
+    min-height: 200px;
     background-color: rgba(91, 95, 103, 0.23);
     padding: 2%;
     overflow-y: auto;

@@ -16,6 +16,7 @@ import MainPageStyle from './PostsList.module.css'
 import {Footer} from "../Footer/Footer";
 import {ModalPostWindow} from "../modalPostWindow/ModalPostWindow";
 import commentIcon from '../../data/icons/main page/comments.svg'
+import {NavBar} from "../Navbar/NavBar";
 
 
 export function PostsList(){
@@ -71,9 +72,9 @@ export function PostsList(){
 
     return <>
         {modalState.active ? <ModalPostWindow /> : null}
-
+        <NavBar />
     <div className={modalState.active ? MainPageStyle.activeModal : MainPageStyle.page}>
-        <Header />
+        {/*<Header />*/}
 
         <div className={MainPageStyle.leftIndent}>left indent</div>
         <div className={MainPageStyle.rightIndent}>right indent</div>
