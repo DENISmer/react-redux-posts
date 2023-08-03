@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {AboutMe} from "./Components/AboutMe";
 import {Users} from "./Components/base/usersPage/Users";
 import {Albums} from "./Components/base/albumsPage/Albums";
+import {UserProfile} from "./Components/base/usersPage/UserProfile/UserProfile";
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
             <Route exac path='/AboutMe' element={ <AboutMe /> }/>
             <Route exac path={'/Users'} element={<Users />} />
             <Route exac path={'/Albums'} element={<Albums />} />
+            <Route exac path={'/Profile'} element={<UserProfile />} />
+
         </Routes>
     </>
   );

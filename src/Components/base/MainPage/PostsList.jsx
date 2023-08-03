@@ -6,12 +6,12 @@ import {useEffect, useState} from "react";
 import {setEnableAction, setDisableAction} from "../../../store/cashReducer";
 import {
     addCustomerAction, fetchCustomerPostsAction,
-    fetchCustomersAction,
+    fetchPostsAction,
     removeAllCustomerAction,
     removeCustomerAction
 } from "../../../store/customerReducer";
 import {decrementCreator, incrementCreator} from "../../saga/countReducer";
-import {fetchCustomers, fetchPostsOfCustomer} from "../../../requests/customers";
+import {fetchPosts, fetchPostsOfCustomer} from "../../../requests/customers";
 import MainPageStyle from './PostsList.module.css'
 import {Footer} from "../../Footer/Footer";
 import {ModalPostWindow} from "../../modalPostWindow/ModalPostWindow";
@@ -70,33 +70,24 @@ export function PostsList(){
     }
 
     useEffect(()=>{
-        dispatch(fetchCustomers());
+        dispatch(fetchPosts());
     },[])
 
     return <>
         {modalState.active ? <ModalPostWindow /> : null}
         <NavBar />
     <div className={modalState.active ? MainPageStyle.activeModal : MainPageStyle.page}>
-        {/*<Header />*/}
 
         <div className={MainPageStyle.leftIndent}>left indent</div>
         <div className={MainPageStyle.rightIndent}>right indent</div>
 
 
-
-        {/*<Button style={{margin: '3px'}} onClick={() => {removeAllCustomer()}}>remove all customers</Button>*/}
-
-        {/*<Button style={{margin: '3px'}} onClick={() => {dispatch(fetchCustomers())}}>request customers</Button>*/}
-
-        {customers.length > 0 ? <div className={MainPageStyle.userList}>{customers.map((post,index)=>(
+        {posts.length > 0 ? <div className={MainPageStyle.userList}>{posts.map((post,index)=>(
             <div key={post.id} className={MainPageStyle.userInfo} onClick={()=> {
                 setEnableModal({active: !modalState.active,
                                 title: post.title,
                                 body: post.body,
-                                postId: post.id});
-
-                //setCurrentPost({title: post.title,body: post.body, id: post.id})
-            }}>
+                                postId: post.id}) }}>
                 <br/>
                 <h4>{post.title}</h4>
                 <br/>
@@ -106,6 +97,7 @@ export function PostsList(){
 
             </div>
         ))}</div> : <div>клиенты отсутствуют</div>}
+
         {/*{posts.length > 0 &&*/}
         {/*    <div className={MainPageStyle.userPostsList}>*/}
         {/*        {posts && posts.title}*/}

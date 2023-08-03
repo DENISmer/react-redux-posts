@@ -19,7 +19,9 @@ export function Header(){
     ));
     return <>
         <header className={header.header}>
+            {/*<img src={'https://getwallpapers.com/wallpaper/full/8/9/2/29270.jpg'}></img>*/}
             <h1>HEADER</h1>
+
         </header>
 
     </>

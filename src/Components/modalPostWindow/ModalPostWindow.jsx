@@ -15,7 +15,7 @@ export function ModalPostWindow(props){
 
     useEffect(()=>{
         dispatch(requestForPostComments(modalState.postId))
-        console.log(comments)
+        console.log(comments.comments)
     },[])
 
     const setDisableModal = (modalState) =>{

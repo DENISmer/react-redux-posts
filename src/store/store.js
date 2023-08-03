@@ -8,6 +8,7 @@ import {countReducer} from "../Components/saga/countReducer";
 import thunk from "redux-thunk";
 import {requestForPostComments} from "../requests/customers";
 import {requestCommentsReducer} from "./commentsRequests";
+import {currentUserReducer} from "./currentUserReducer";
 
 const defaultRequest = async () => {
     await axios.get(URL_S.ALL_POST)
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     count: countReducer,
     modalPost: modalWindowReducer,
     customers: customerReducer,
+    userProcess : currentUserReducer,
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
