@@ -6,6 +6,7 @@
     grid-column-end: 4;
 }
 .header>img{
+    position: static;
     width: 100%;
-    z-index: 100;
+    z-index: -10000;
 }

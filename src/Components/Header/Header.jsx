@@ -19,8 +19,7 @@ export function Header(){
     ));
     return <>
         <header className={header.header}>
-            {/*<img src={'https://getwallpapers.com/wallpaper/full/8/9/2/29270.jpg'}></img>*/}
-            <h1>HEADER</h1>
+            <img src={'https://images.hdqwalls.com/download/lake-reflections-4k-wide-2560x1080.jpg'}></img>
 
         </header>
 

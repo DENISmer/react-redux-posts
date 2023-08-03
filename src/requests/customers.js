@@ -29,7 +29,7 @@ export const fetchCustomers = () => {
 export const fetchPostsOfCustomer = (customer) => {
     console.log(customer)
     return dispatch => {
-        axios.get(`${URL_BY_INFO.GET_POSTS_BY_USER}${customer.id}`)
+        axios.get(`${URL_BY_INFO.GET_POSTS_BY_USER}${customer}`)
             .then((response) => {
                 console.log(response.data)
                 dispatch(fetchCustomerPostsAction(response.data))

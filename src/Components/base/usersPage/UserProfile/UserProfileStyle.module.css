@@ -1,11 +1,60 @@
+.profilePage{
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2.5fr 1fr;;
+}
 .profileInfo{
+    position: relative;
+    top: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    height: max-content;
     width: 100%;
     padding: 3%;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 2;
     background-color: rgba(186, 187, 192, 0.79);
     border-radius: 10px;
-    font-family: Geneva;
+    font-family: 'Roboto', sans-serif;
     font-size: 22px;
 }
 .profileContent{
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    margin-top: 100px;
+}
+.profileContentButton{
+    border-radius: 7px;
+    width: 20%;
+    height: 4%;
+    margin-left: 1%;
+}
+.profileContentButtonActive{
+    background-color: rgba(51, 104, 119, 0.7);
+    border-radius: 7px;
+    width: 20%;
+    height: 4%;
+    margin-left: 1%;
+}
+
+.userPosts{
+
+}
+.userPostsItem{
+    border-radius: 7px;
+    background-color: rgba(165, 169, 173, 0.78);
+    margin-top: 12px;
+    padding: 10px;
+}
+.userAlbums{
+
+}
+.userAlbumItem{
 
 }

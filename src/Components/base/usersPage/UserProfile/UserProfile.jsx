@@ -4,24 +4,34 @@ import {NavBar} from "../../../Navbar/NavBar";
 import {Footer} from "../../../Footer/Footer";
 import {Header} from "../../../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {fetchCustomerPostsAction} from "../../../../store/customerReducer";
+import {fetchPostsOfCustomer} from "../../../../requests/customers";
 export function UserProfile(){
 
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.userProcess.currentUser)
+    const postsOfUser = useSelector(state => state.customers.posts)
+
+    const [active,setActive] = useState({posts: true,albums: false})
+    useEffect(()=>{
+
+        currentUser.id && dispatch(fetchPostsOfCustomer(currentUser.id))
+        console.log(postsOfUser)
+        },[])
 
     useEffect(()=>{
-        console.log(currentUser)
-        },[])
+        currentUser.id && active.posts && dispatch(fetchPostsOfCustomer(currentUser.id))
+    },[active.posts])
+
     return (<>
         <NavBar />
-        <div className={pageStyle.page}>
-            <Header />
 
+        <div className={profileStyle.profilePage}>
+            <Header />
             <div className={pageStyle.leftIndent}>left indent</div>
             <div className={pageStyle.rightIndent}>right indent</div>
 
-            <div className={pageStyle.userList}>
                 <div className={profileStyle.profileInfo}>
                     {currentUser.id}
                     <br/>
@@ -37,9 +47,26 @@ export function UserProfile(){
                     <br/>
                 </div>
                 <div className={profileStyle.profileContent}>
-                    {}
+                    <button className={active.posts ?
+                        profileStyle.profileContentButtonActive :
+                        profileStyle.profileContentButton}
+                        onClick={()=> setActive({posts: true, albums: false})}>POSTS</button>
+
+                    <button className={active.albums ?
+                        profileStyle.profileContentButtonActive :
+                        profileStyle.profileContentButton}
+                        onClick={()=> setActive({posts: false, albums: true})}>ALBUMS</button>
+
+                    {postsOfUser ? postsOfUser.map((post,index)=>(
+                    <div key={index} className={profileStyle.userPostsItem}>
+                        {post.id}{post.title}{post.body}
+                    </div>
+                )) : <div><h1>EMPTY</h1></div>}
+
                 </div>
-            </div>
+                <div className={pageStyle.userList}>
+
+                </div>
 
             <Footer />
         </div>
