@@ -6,12 +6,13 @@ import {Header} from "../../../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {fetchCustomerPostsAction} from "../../../../store/customerReducer";
-import {fetchPostsOfCustomer} from "../../../../requests/customers";
+import {fetchAlbumsOfCustomer, fetchPostsOfCustomer} from "../../../../requests/customers";
 export function UserProfile(){
 
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.userProcess.currentUser)
     const postsOfUser = useSelector(state => state.customers.posts)
+    const albumsOfUser = useSelector(state => state.customers.albums)
 
     const [active,setActive] = useState({posts: true,albums: false})
     useEffect(()=>{
@@ -21,8 +22,12 @@ export function UserProfile(){
         },[])
 
     useEffect(()=>{
-        currentUser.id && active.posts && dispatch(fetchPostsOfCustomer(currentUser.id))
-    },[active.posts])
+        currentUser.id && active.posts === true && dispatch(fetchPostsOfCustomer(currentUser.id))
+
+        currentUser.id && active.albums === true && dispatch(fetchAlbumsOfCustomer(currentUser.id))
+        console.log(albumsOfUser)
+
+    },[active])
 
     return (<>
         <NavBar />
@@ -57,11 +62,21 @@ export function UserProfile(){
                         profileStyle.profileContentButton}
                         onClick={()=> setActive({posts: false, albums: true})}>ALBUMS</button>
 
-                    {postsOfUser ? postsOfUser.map((post,index)=>(
-                    <div key={index} className={profileStyle.userPostsItem}>
-                        {post.id}{post.title}{post.body}
-                    </div>
-                )) : <div><h1>EMPTY</h1></div>}
+                    {/* rendering user posts/albums */}
+                    {active.posts ?
+                        postsOfUser ? postsOfUser.map((post,index)=>(
+                            <div key={index} className={profileStyle.userPostsItem}>
+                                {post.id}{post.title}{post.body}
+                            </div>
+                        )) : <div><h1>EMPTY POSTS</h1></div>
+                    :
+                        albumsOfUser ? albumsOfUser.map((album,index)=>(
+                                <div key={index} className={profileStyle.userPostsItem}>
+                                    {album.id}
+                                </div>
+                            )) : <div><h1>EMPTY ALBUMS</h1></div>
+                    }
+
 
                 </div>
                 <div className={pageStyle.userList}>

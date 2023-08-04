@@ -2,6 +2,7 @@
 const defaultState = {
     customers: [],
     posts: [],
+    albums: [],
 }
 
 const ADD_CUSTOMER = "ADD_CUSTOMER";
@@ -10,11 +11,14 @@ const REMOVE_ALL_CUSTOMERS = "REMOVE_ALL_CUSTOMERS";
 const REQUEST_POSTS = "REQUEST_POSTS";
 const REQUEST_CUSTOMER_POSTS = 'REQUEST_CUSTOMER_POSTS';
 const REQUEST_CUSTOMERS = 'REQUEST_CUSTOMERS';
+const REQUEST_CUSTOMER_ALBUMS = 'REQUEST_CUSTOMER_ALBUMS';
 export const customerReducer = (state = defaultState, action) => {
     switch (action.type) {
         case REQUEST_CUSTOMER_POSTS:
             console.log(action.payload)
             return {...state,posts: [...action.payload]};
+        case REQUEST_CUSTOMER_ALBUMS:
+            return {...state,albums: [...action.payload]}
         case REQUEST_POSTS:
             return {...state,posts: [...action.payload]};
         case REQUEST_CUSTOMERS:
@@ -38,3 +42,5 @@ export const fetchPostsAction = (payload) => ({type: REQUEST_POSTS,payload})
 export const removeAllCustomerAction = () => ({type: REMOVE_ALL_CUSTOMERS})
 
 export const fetchCustomerPostsAction = (payload) => ({type: REQUEST_CUSTOMER_POSTS,payload})
+
+export const fetchCustomerAlbumsAction = (payload) => ({type: REQUEST_CUSTOMER_ALBUMS, payload})
