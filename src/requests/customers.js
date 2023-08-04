@@ -8,7 +8,11 @@ import axios from "axios";
 import {requestCommentsAction} from "../store/commentsRequests";
 import {MAIN_URLS, SINGLE_URLS, URL_BY_INFO} from "./config";
 
+
+
+
 export const fetchPosts = () => {
+
     return dispatch => {
         axios.get(MAIN_URLS.GET_POSTS)
             .then((response) => {
@@ -32,12 +36,14 @@ export const fetchCustomers = () => {
     }
 }
 export const fetchPostsOfCustomer = (customer) => {
+
     console.log(customer)
     return dispatch => {
         axios.get(`${URL_BY_INFO.GET_POSTS_BY_USER}${customer}`)
             .then((response) => {
                 console.log(response.data)
                 dispatch(fetchCustomerPostsAction(response.data));
+
             })
             .catch((e)=> {
                 alert(`Возникла ошибка: \n${e.message }`);

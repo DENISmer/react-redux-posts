@@ -9,6 +9,7 @@ import thunk from "redux-thunk";
 import {requestForPostComments} from "../requests/customers";
 import {requestCommentsReducer} from "./commentsRequests";
 import {currentUserReducer} from "./currentUserReducer";
+import {processingReducer} from "./system/processingReducer";
 
 const defaultRequest = async () => {
     await axios.get(URL_S.ALL_POST)
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
     modalPost: modalWindowReducer,
     customers: customerReducer,
     userProcess : currentUserReducer,
+    system : processingReducer,
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

@@ -1,6 +1,6 @@
 .profilePage{
     display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 0.5fr 2fr 0.5fr;
     grid-template-columns: 1fr 2.5fr 1fr;;
 }
 .profileInfo{
@@ -34,6 +34,7 @@
     width: 20%;
     height: 4%;
     margin-left: 1%;
+    transition: 0.5s ;
 }
 .profileContentButtonActive{
     background-color: rgba(51, 104, 119, 0.7);
@@ -47,10 +48,13 @@
 
 }
 .userPostsItem{
+    cursor: default;
+    height: max-content;
     border-radius: 7px;
-    background-color: rgba(165, 169, 173, 0.78);
-    margin-top: 12px;
-    padding: 10px;
+    background-color: rgb(215, 222, 233);
+    margin-top: 2%;
+    padding: 2.5%;
+    box-shadow: 2px 2px 7px rgba(58, 58, 58, 0.79);
 }
 .userAlbums{
 
