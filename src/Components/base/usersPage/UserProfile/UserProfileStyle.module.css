@@ -32,7 +32,7 @@
 .profileContentButton{
     border-radius: 7px;
     width: 20%;
-    height: 4%;
+    height: 50px;
     margin-left: 1%;
     transition: 0.5s ;
 }
@@ -40,7 +40,7 @@
     background-color: rgba(51, 104, 119, 0.7);
     border-radius: 7px;
     width: 20%;
-    height: 4%;
+    height: 50px;
     margin-left: 1%;
 }
 
