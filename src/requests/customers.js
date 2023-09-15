@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import {requestCommentsAction} from "../store/commentsRequests";
 import {MAIN_URLS, SINGLE_URLS, URL_BY_INFO} from "./config";
+import {setCurrentUserAction, setCurrentUserByEmail} from "../store/currentUserReducer";
 
 
 
@@ -75,3 +76,20 @@ export const requestForPostComments = (postId) => {
             })
     }
 }
+
+export const requestForUserByEmail = (email) => {
+    return dispatch => {
+        axios.get(`${URL_BY_INFO.GET_USER_BY_COMMENT}${email}`)
+            .then((response) => {
+                console.log(`${URL_BY_INFO.GET_USER_BY_COMMENT}${email}`);
+                if(response.data && response.data !== []){
+                    dispatch(setCurrentUserByEmail(response.data))
+                }
+                else alert(`Такого пользователя нет`)
+            })
+            .catch((e) => {
+                alert(`Возникла ошибка: \n${e.message}`)
+            })
+    }
+}
+

@@ -13,7 +13,8 @@ export function UserProfile(){
 
     const modalState = useSelector(state => state.modalPost);
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.userProcess.currentUser)
+    const currentUser = useSelector(state => state.userProcess.currentUser);
+    const currentUserByEmail = useSelector(state => state.userProcess.currentUserByEmail)
     const postsOfUser = useSelector(state => state.customers.posts)
     const albumsOfUser = useSelector(state => state.customers.albums)
 
@@ -47,6 +48,7 @@ export function UserProfile(){
 
                 <div className={profileStyle.profileInfo}>
                     {currentUser.id}
+                    {currentUserByEmail.id}
                     <br/>
                     {currentUser.name}
                     <br/>
@@ -90,11 +92,8 @@ export function UserProfile(){
                                 </div>
                             )) : <div><h1>EMPTY ALBUMS</h1></div>
                     }
-
-
                 </div>
                 <div className={pageStyle.userList}>
-
                 </div>
 
             <Footer />

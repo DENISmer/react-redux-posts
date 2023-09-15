@@ -18,4 +18,5 @@ export const URL_BY_INFO = {
     GET_ALBUMS_BY_USER : `${domain}albums?userId=`,
     GET_PHOTOS_BY_ALBUM : `${domain}photos?albumId=`,
     GET_COMMENTS_BY_POST : `${domain}comments?postId=`,
+    GET_USER_BY_COMMENT : `${domain}users?email=`,
 }
