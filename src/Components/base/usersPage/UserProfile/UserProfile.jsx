@@ -38,12 +38,11 @@ export function UserProfile(){
     },[active])
 
     return (<>
-        <NavBar />
         {modalState.active ? <ModalPostWindow /> : null}
 
         <div className={profileStyle.profilePage}>
             <Header />
-            <div className={pageStyle.leftIndent}>left indent</div>
+            <div className={pageStyle.leftIndent}>left indent <NavBar /></div>
             <div className={pageStyle.rightIndent}>right indent</div>
 
                 <div className={profileStyle.profileInfo}>
