@@ -1,7 +1,7 @@
 import {
     fetchCustomerAlbumsAction,
     fetchCustomerPostsAction,
-    fetchCustomersAction,
+    fetchCustomersAction, fetchPhotosByAlbumAction,
     fetchPostsAction
 } from "../store/customerReducer";
 import axios from "axios";
@@ -57,6 +57,19 @@ export const fetchAlbumsOfCustomer = (customer) => {
         axios.get(`${URL_BY_INFO.GET_ALBUMS_BY_USER}${customer}`)
             .then((response)=> {
                 dispatch(fetchCustomerAlbumsAction(response.data));
+            })
+            .catch((e) => {
+                alert(`Возникла ошибка: \n${e.message }`);
+            })
+    }
+}
+
+export const fetchPhotosOfCustomerAlbum = (album) => {
+    return dispatch => {
+        axios.get(`${URL_BY_INFO.GET_PHOTOS_BY_ALBUM}${album}`)
+            .then((response) => {
+                dispatch(fetchPhotosByAlbumAction(response.data))
+                console.log(response.data)
             })
             .catch((e) => {
                 alert(`Возникла ошибка: \n${e.message }`);

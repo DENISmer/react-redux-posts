@@ -3,6 +3,7 @@ const defaultState = {
     customers: [],
     posts: [],
     albums: [],
+    photos: [],
 }
 
 const ADD_CUSTOMER = "ADD_CUSTOMER";
@@ -12,6 +13,8 @@ const REQUEST_POSTS = "REQUEST_POSTS";
 const REQUEST_CUSTOMER_POSTS = 'REQUEST_CUSTOMER_POSTS';
 const REQUEST_CUSTOMERS = 'REQUEST_CUSTOMERS';
 const REQUEST_CUSTOMER_ALBUMS = 'REQUEST_CUSTOMER_ALBUMS';
+const REQUEST_CUSTOMER_PHOTOS = 'REQUEST_CUSTOMER_PHOTOS';
+
 export const customerReducer = (state = defaultState, action) => {
     switch (action.type) {
         case REQUEST_CUSTOMER_POSTS:
@@ -29,6 +32,8 @@ export const customerReducer = (state = defaultState, action) => {
             return {...state,customers: state.customers.filter((customer) => customer.id !== action.payload)};
         case REMOVE_ALL_CUSTOMERS:
             return {...state,customers: []};
+        case REQUEST_CUSTOMER_PHOTOS:
+            return {...state,photos: [state.albums,...action.payload]}
         default:
             return state;
     }
@@ -44,3 +49,5 @@ export const removeAllCustomerAction = () => ({type: REMOVE_ALL_CUSTOMERS})
 export const fetchCustomerPostsAction = (payload) => ({type: REQUEST_CUSTOMER_POSTS,payload})
 
 export const fetchCustomerAlbumsAction = (payload) => ({type: REQUEST_CUSTOMER_ALBUMS, payload})
+
+export const fetchPhotosByAlbumAction = (payload) => ({type: REQUEST_CUSTOMER_PHOTOS, payload});
