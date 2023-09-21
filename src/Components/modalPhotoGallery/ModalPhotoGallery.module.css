@@ -9,7 +9,6 @@
     margin-top: 1%;
     display: flex;
     flex-wrap: wrap;
-    /*justify-content: space-between;*/
     max-height: 87%;
     overflow-y: auto;
     padding: 1%;
@@ -17,7 +16,7 @@
 .content_item {
     display: flex;
     flex-direction: column;
-    margin-left: 1.5%;
+    margin-left: 2%;
     margin-top: 1%;
 }
 .content_item img {

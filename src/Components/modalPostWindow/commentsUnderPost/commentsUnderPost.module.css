@@ -32,11 +32,16 @@
     background-color: rgba(47, 41, 41, 0.78);
     overflow-y: auto;
 }
+
 .commentTextArea{
     position: sticky;
     bottom: -15px;
+    max-height: 300px;
 }
-.commentTextArea>input{
+.commentTextArea>textarea{
+    resize: initial;
+    word-wrap: break-word;
+    word-break: break-word;
     width: 80%;
     max-width: 90%;
 }

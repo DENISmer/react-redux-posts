@@ -9,27 +9,25 @@ import {fetchCustomerPostsAction, fetchPhotosByAlbumAction} from "../../../../st
 import {fetchAlbumsOfCustomer, fetchPhotosOfCustomerAlbum, fetchPostsOfCustomer} from "../../../../requests/customers";
 import {ModalPostWindow} from "../../../modalPostWindow/ModalPostWindow";
 import {setEnableAction} from "../../../../store/cashReducer";
-import {ModalPhotoGallery} from "../../../modalPhotoGallery/ModalPhotoGallery.jsx";
+import {ModalPhotoGallery} from "../../../modalPhotoGallery/ModalPhotoGallery";
 export function UserProfile(){
 
     const modalState = useSelector(state => state.modalPost);
     const dispatch = useDispatch();
-
     const currentUser = useSelector(state => state.userProcess.currentUser);
-    const currentUserByEmail = useSelector(state => state.userProcess.currentUserByEmail);
-    const postsOfUser = useSelector(state => state.customers.posts);
+    const currentUserByEmail = useSelector(state => state.userProcess.currentUserByEmail)
+    const postsOfUser = useSelector(state => state.customers.posts)
+    const albumsOfUser = useSelector(state => state.customers.albums)
 
-    const albumsOfUser = useSelector(state => state.customers.albums);
-    const photosOfAlbum = useSelector(state => state.customers.photos);
+    const photos = useSelector(state => state.customers.photos);
     const [currentAlbum,setCurrentAlbum] = useState({});
-    const [galleryActive,setGalleryActive] = useState(false);
 
     const setEnableModal = (modalState) => {
         dispatch(setEnableAction(modalState))
     }
 
-    const setDisableGallery = () => {
-        setCurrentAlbum({title: undefined, id: undefined, active: false});
+    const setGalleryDisable = () => {
+        setCurrentAlbum({title: '',id: '',active: false})
     }
 
     const [active,setActive] = useState({posts: true,albums: false})
@@ -48,12 +46,13 @@ export function UserProfile(){
     },[active])
 
     return (<>
+        <NavBar />
         {modalState.active ? <ModalPostWindow /> : null}
-        {currentAlbum.active ? <ModalPhotoGallery album={currentAlbum} disable={setDisableGallery}/> : null}
+        {currentAlbum.active && <ModalPhotoGallery album={currentAlbum} disable={setGalleryDisable}/>}
 
         <div className={profileStyle.profilePage}>
             <Header />
-            <div className={pageStyle.leftIndent}>left indent <NavBar /></div>
+            <div className={pageStyle.leftIndent}>left indent</div>
             <div className={pageStyle.rightIndent}>right indent</div>
 
                 <div className={profileStyle.profileInfo}>
@@ -98,10 +97,10 @@ export function UserProfile(){
                     :
                         albumsOfUser ? albumsOfUser.map((album,index)=>(
                                 <div key={index} className={profileStyle.userPostsItem}
-                                    onClick={() => {
-                                        dispatch(fetchPhotosOfCustomerAlbum(album.id));
-                                        setCurrentAlbum({title: album.title, id: album.id,active: true});
-                                    }}>
+                                onClick={() => {
+                                    dispatch(fetchPhotosOfCustomerAlbum(album.id));
+                                    setCurrentAlbum({title: album.title, id: album.id, active: true});
+                                }}>
                                     {album.title}
                                 </div>
                             )) : <div><h1>EMPTY ALBUMS</h1></div>

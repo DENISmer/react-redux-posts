@@ -1,8 +1,8 @@
 .NavBarWindow{
-    position: sticky;
-    top: 15%;
+    position: fixed;
+    top: 20%;
     left: 10%;
-    width: 30%;
+    width: 12%;
     height: 300px;
     z-index: 1;
     background-color: #61dafb;
