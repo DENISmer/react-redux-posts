@@ -24,18 +24,21 @@ export function ModalPostWindow(props){
     }
     return(<>
         <div className={modalStyle.window}>
-            <div className={modalStyle.closeButton} onClick={()=> setDisableModal({active: !modalState.active,
-                title: '',
-                body: '',
-                postId: ''})}><img alt={null} src={closeIcon}/></div>
             <div className={modalStyle.postContent}>
+                <div className={modalStyle.closeButton} onClick={()=>
+                    setDisableModal({active: !modalState.active,
+                        title: '',
+                        body: '',
+                        postId: ''})}>
+                    <img alt={null} src={closeIcon}/>
+                </div>
                 <div className={modalStyle.postBody} >
-
-                    <h4>
-                        {modalState.title}
-                    </h4>
-
-                    {modalState.body}
+                    <span>
+                        <h4>
+                            {modalState.title}
+                        </h4>
+                        {modalState.body}
+                    </span>
 
                     {/*<br/><br/>{comments[0].name}*/}
 

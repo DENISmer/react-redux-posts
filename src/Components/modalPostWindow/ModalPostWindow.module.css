@@ -9,20 +9,24 @@
     justify-content: center;
 }
 .postBody{
+    padding: 1%;
+    width: 87%;
     min-height: 200px;
     background-color: rgba(91, 95, 103, 0.23);
-    padding: 2%;
     overflow-y: auto;
     border-radius: 8px;
-
 }
 .postBody:hover{
     /*background-color: rgba(29, 47, 93, 0.99);*/
 }
+.postBody>span {
+   max-width: max-content;
+}
 .postContent{
-    padding: 3%;
+    padding: 10px;
+    /*padding: 3%;*/
     width: 70%;
-    height: 70%;
+    height: 80%;
     position: absolute;
     display: flex;
     /*justify-content: center;*/
@@ -34,11 +38,22 @@
     color: #dbe0e8;
     transition: 0.2s;
 }
+.postBody::-webkit-scrollbar {
+    background-color: #32b4c4;
+    border-radius: 3px;
+    width: 8px;
+    margin-right: 3px;
+}
+.postBody::-webkit-scrollbar-thumb{
+    background-color: #263238;
+    border: 0.3px solid white;
+    border-radius: 3px;
+}
 .closeButton{
     z-index: 1150;
     position: absolute;
-    right: 15%;
-    top: 15%;
+    right: 2%;
+    /*top: 10%;*/
     color: #61dafb;
     transition: 0.5s;
     border-radius: 10px;

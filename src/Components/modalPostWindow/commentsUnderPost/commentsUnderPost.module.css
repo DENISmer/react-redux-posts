@@ -1,41 +1,53 @@
 .allComments{
     position: sticky;
     border-radius: 5px;
-    padding: 1%;
-    bottom: 10px;
+    padding: 15px;
+    bottom: 10%;
     margin: 10px;
 
-    max-width: 700px;
+    width: 87%;
     /*width: max-content;*/
     min-width: 100px;
 
-    max-height: 300px;
-    height: 300px;
+    max-height: 90rem;
+    height: 90rem;
     min-height: 100px;
     background-color: rgba(97, 218, 251, 0.16);
     overflow-y: auto;
     overflow-x: hidden;
 
 }
+.allComments::-webkit-scrollbar {
+    background-color: #32b4c4;
+    border-radius: 3px;
+    width: 8px;
+    margin-right: 3px;
+}
+.allComments::-webkit-scrollbar-thumb{
+    background-color: #263238;
+    border: 0.3px solid white;
+    border-radius: 3px;
+}
 .commentItem{
-    max-width: 620px;
+    max-width: 100%;
     /*width: 620px;*/
-
-    max-height: 200px;
     height: max-content;
     min-height: 30px;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 6px;
     border-radius: 3px;
     margin-top: 10px;
     background-color: rgba(47, 41, 41, 0.78);
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .commentTextArea{
+    margin-top: 0.5%;
+    display: inline-flex;
+    width: 100%;
     position: sticky;
-    bottom: -15px;
+    bottom: -10px;
     max-height: 300px;
 }
 .commentTextArea>textarea{
@@ -57,6 +69,8 @@
     /*border: 1px #61dafb solid ;*/
     transition: 0.5s;
     margin-bottom: 1%;
+    background-color: rgba(97, 218, 251, 0.05);
+    font-weight: bold;
 }
 .commentUserMail:hover{
     background-color: rgba(97, 218, 251, 0.22);

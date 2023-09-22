@@ -75,10 +75,10 @@ export function PostsList(){
 
     return <>
         {modalState.active ? <ModalPostWindow /> : null}
-        <NavBar />
+
     <div className={modalState.active ? MainPageStyle.activeModal : MainPageStyle.page}>
 
-        <div className={MainPageStyle.leftIndent}>left indent</div>
+        <div className={MainPageStyle.leftIndent}>left indent<NavBar /></div>
         <div className={MainPageStyle.rightIndent}>right indent</div>
 
 

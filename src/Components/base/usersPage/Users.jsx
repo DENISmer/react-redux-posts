@@ -22,11 +22,11 @@ export function Users(){
     },[])
 
 
-    return (<><NavBar />
+    return (<>
 
         <div className={MainPageStyle.page}>
 
-            <div className={MainPageStyle.leftIndent}>left indent</div>
+            <div className={MainPageStyle.leftIndent}>left indent<NavBar /></div>
             <div className={MainPageStyle.rightIndent}>right indent</div>
 
             {users.length > 0 ? <div className={MainPageStyle.userList}>{users.map((user,index)=>(

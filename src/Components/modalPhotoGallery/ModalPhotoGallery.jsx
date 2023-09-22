@@ -14,7 +14,7 @@ export function ModalPhotoGallery(props) {
                 <div className={GalleryWindowStyle.content}>
                     {photosOfAlbum && photosOfAlbum.map((item, index) => (
                         <div key={index} className={GalleryWindowStyle.content_item}>
-                            <img src={item.thumbnailUrl} alt={''} title={item.title}/>
+                            <img src={item.thumbnailUrl} alt={''} title={item.title + item.url + item.id} onClick={() => {window.open(item.url, '_blank')}}/>
                             {/*<span>{item.title}</span>*/}
                         </div>
                     ))}
