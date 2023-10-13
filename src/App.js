@@ -1,27 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
-import {Route, Routes} from "react-router";
-import {PostsList} from "./Components/base/MainPage/PostsList";
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {AboutMe} from "./Components/AboutMe";
-import {Users} from "./Components/base/usersPage/Users";
-import {Albums} from "./Components/base/albumsPage/Albums";
-import {UserProfile} from "./Components/base/usersPage/UserProfile/UserProfile";
 
 
 function App() {
+    const PostList = lazy(() =>
+            import("./Components/base/MainPage/PostsList")
+    )
 
   return (
-    <>
-        <Routes>
-            <Route path='/' element={ <PostsList /> }/>
-            <Route exac path='/AboutMe' element={ <AboutMe /> }/>
-            <Route exac path={'/Users'} element={<Users />} />
-            <Route exac path={'/Albums'} element={<Albums />} />
-            <Route exac path={'/Profile'} element={<UserProfile />} />
+      <>
+      <Router>
+              <Routes>
+                  <Route path="/" element={
+                      <Suspense fallback={
+                          <div>Loading...</div>}>
+                          <PostList />
+                      </Suspense>
+                  }/>
 
-        </Routes>
-    </>
+              </Routes>
+      </Router>
+      </>
   );
 }
 

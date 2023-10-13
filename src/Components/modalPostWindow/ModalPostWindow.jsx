@@ -7,7 +7,7 @@ import {removeCommentsAction, requestCommentsAction} from "../../store/commentsR
 import {CommentsBlock} from "./commentsUnderPost/commentsBlock";
 import closeIcon from '../../data/icons/buttons/closeButton.png'
 
-export function ModalPostWindow(props){
+export default function ModalPostWindow(props){
     const dispatch = useDispatch()
 
     const modalState = useSelector(state => state.modalPost);

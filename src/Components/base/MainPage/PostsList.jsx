@@ -2,7 +2,7 @@ import 'react-bootstrap'
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {Header} from "../../Header/Header";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState, lazy} from "react";
 import {setEnableAction, setDisableAction} from "../../../store/cashReducer";
 import {
     addCustomerAction, fetchCustomerPostsAction,
@@ -14,13 +14,13 @@ import {decrementCreator, incrementCreator} from "../../saga/countReducer";
 import {fetchPosts, fetchPostsOfCustomer} from "../../../requests/customers";
 import MainPageStyle from './PostsList.module.css'
 import {Footer} from "../../Footer/Footer";
-import {ModalPostWindow} from "../../modalPostWindow/ModalPostWindow";
+// import {ModalPostWindow} from "../../modalPostWindow/ModalPostWindow";
 import commentIcon from '../../../data/icons/main page/comments.svg'
 import {NavBar} from "../../Navbar/NavBar";
 import {useNavigate} from "react-router";
 
 
-export function PostsList(){
+export default function PostsList(){
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -33,7 +33,9 @@ export function PostsList(){
 
     const [currentPost,setCurrentPost] = useState({title: '',body:'',id: 0});
 
-
+    const ModalPostWindow = lazy(() =>
+        import("../../modalPostWindow/ModalPostWindow")
+    )
     const setEnableModal = (modalState) => {
         dispatch(setEnableAction(modalState))
     }
@@ -74,7 +76,13 @@ export function PostsList(){
     },[])
 
     return <>
-        {modalState.active ? <ModalPostWindow /> : null}
+    {modalState.active ? <Suspense fallback={
+        <div>
+            <h1>Loading...</h1>
+        </div>
+    }>
+        <ModalPostWindow />
+    </Suspense> : null}
 
     <div className={modalState.active ? MainPageStyle.activeModal : MainPageStyle.page}>
 
